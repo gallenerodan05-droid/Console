@@ -124,6 +124,9 @@ static void Add_Task() {
 
         System.out.print("Enter Due Date (e.g. 2026-04-01): ");
         System.out.println("Me no like you ⁉️");
+        System.out.println("fdfdsdxfsfdsfgfdsgff");
+        
+
 
         dueDate = scanner.nextLine().trim();
 
