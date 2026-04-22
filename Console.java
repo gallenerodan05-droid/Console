@@ -104,6 +104,7 @@ static void Add_Task() {
 // yeah this must be removed lol pretty stupid tbh.
      else if(task.length()  <= 7){
         System.out.println("What task needs just 7 letters??  You a dumbass?");
+
      }
         
      else{
@@ -122,6 +123,7 @@ static void Add_Task() {
 
 
         System.out.print("Enter Due Date (e.g. 2026-04-01): ");
+        System.out.println("Me no like you ⁉️");
 
         dueDate = scanner.nextLine().trim();
 
