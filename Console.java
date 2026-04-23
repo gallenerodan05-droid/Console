@@ -100,7 +100,8 @@ static void Add_Task() {
      if(task.isEmpty()){
         System.out.println("Input must not be empty!");
         
-     }
+     }//rather than coding it like this i lwkey could make the if Statment ( if task is not empty or shorter than this.  so the else/elif statement  would have to be the warning statements
+
 // yeah this must be removed lol pretty stupid tbh.
      else if(task.length()  <= 7){
         System.out.println("What task needs just 7 letters??  You a dumbass?");
