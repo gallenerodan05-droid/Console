@@ -34,7 +34,7 @@ The only problem was that I did'nt know how to connect
             System.out.println("Enter a choice: ");
             System.out.println("1. Add Task \n2. View List \n3. Mark Done \n4. Delete \n5. Save \n6. Load \n7. File Deletion \n8. File Read \n9. Exit");
 
-            int User_Input  = scanner.nextInt();
+           intU userInput  = scanner.nextInt();
             scanner.nextLine();
 
 
@@ -88,7 +88,7 @@ The only problem was that I did'nt know how to connect
 
 
 
-static void Add_Task() {
+static void addTask() {
 
     
     String task;
@@ -171,7 +171,7 @@ static void Add_Task() {
    
 
 
-static void ViewList() {
+static void viewList() {
 
     if (taskz.isEmpty()) {
         System.out.println("No tasks!");
@@ -183,9 +183,9 @@ static void ViewList() {
     }
 }
         
-static void Marked() {
+static void marked() {
 
-    ViewList();
+    viewList();
 
     if( taskz.size() <=0){
         System.out.println("You have no task to mark!");
@@ -358,7 +358,7 @@ static void readFile() throws  IOException {
 }
 
 
-static void Delete() {
+static void delete() {
 
     
     ViewList();
