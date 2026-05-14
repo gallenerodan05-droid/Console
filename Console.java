@@ -34,7 +34,7 @@ The only problem was that I did'nt know how to connect
             System.out.println("Enter a choice: ");
             System.out.println("1. Add Task \n2. View List \n3. Mark Done \n4. Delete \n5. Save \n6. Load \n7. File Deletion \n8. File Read \n9. Exit");
 
-           intU userInput  = scanner.nextInt();
+           int userInput  = scanner.nextInt();
             scanner.nextLine();
 
 
