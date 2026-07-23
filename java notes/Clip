@@ -1,0 +1,21 @@
+import javax.sound.sampled.AudioInputStream;
+
+public class Clip {
+
+    public void open(AudioInputStream audio) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'open'");
+    }
+
+    public void start() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'start'");
+    }
+
+    public void stop() {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'stop'");
+    }
+
+}
+TODO Auto-generated method stub

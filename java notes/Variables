@@ -1,0 +1,209 @@
+public class  Variables{
+    public static void main(String[] args) {
+    
+    System.out.println("Gwapo ko no?");
+    int basta = 12;
+    System.out.println(basta);
+    String bastaz = "Dan Gallenero";
+    System.out.println(bastaz);
+    int myNum;
+    myNum = 90; 
+    System.out.println(myNum); //concat method only works on String lol
+    System.out.println(bastaz.length()); // there's also to UpperCase to lowerCase u get the idea
+    System.out.println(bastaz.indexOf("Gallenero"));
+   System.out.println(Math.sqrt(basta));
+
+
+
+
+}
+
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// It's somehow an error to put a value in a list/bracket. Maybe I did not state the Array function that's why??
+
+
+
+/*Object (what it REALLY is)
+Definition
+
+An object is an instance of a class that groups related data (fields) and behavior (methods).
+
+Object = structured data + behavior 
+class Person {
+    String name;
+    int age;
+
+    void greet() {
+        System.out.println("Hi!");
+    }
+}
+
+Person p = new Person();
+
+    p → variable
+
+    new Person() → object
+
+⚠️ Important:
+The variable is NOT the object
+The variable points to the objec*/
+
+
+
+//A variable is a named reference to a value in memory.
+// A variable does not store logic
+// A variable does not define structure
+// A variable simply points to a value
+
+
+
+/* #public = is an access modifier.
+The JVM (Java Virtual Machine) must be able to access:
+
+your class
+
+and your main method
+
+#class = s a blueprint.
+Java is class-based.
+All code must live inside a class.
+
+#{ } (curly braces) =
+They define a scope.
+
+Everything inside {} belongs together.
+
+You see them for:
+
+classes
+
+methods
+
+loops
+
+conditionals
+
+
+
+
+#public static void main(String[] args)
+
+This line is VERY IMPORTANT.
+It’s the entry point of a Java program.
+
+static = “This belongs to the class, not to an object.”
+
+
+Why main must be static
+
+Java starts without creating an object
+
+The JVM calls main directly
+
+
+Without static:
+
+public void main(String[] args) { }
+
+
+➡️ JVM doesn’t know how to run it
+
+Analogy
+
+static = public announcement
+
+non-static = you must create a person first
+
+
+void
+
+What it means
+
+void = returns nothing
+
+You already understand this well 👍
+
+Why main is void
+
+JVM doesn’t care about return values
+
+It only needs the program to start and run
+
+
+main
+What it is
+
+The special method name Java looks for.
+
+Think:
+
+“Hey Java, start here.”
+
+
+String[] args
+
+String[] → an array of Strings
+
+args → command-line arguments
+args can be renamed
+
+System.out.println(...)
+
+System
+A built-in Java class
+
+out
+
+A static field inside System
+
+Represents standard output (your console)
+
+println
+
+A method
+
+Prints text
+
+Moves to a new line
+
+; (semicolon)
+What it means
+
+"Gwapo ko no?"
+
+A String literal
+
+Text wrapped in double quotes
+
+Java treats this as an object of type String
+
+“End of statement.”
+
+Java requires it.
+
+Mental Modwl
+Class
+ └── main()
+      └── code runs here
+
+
+public static void main(String[] args) = this is fixed.
+
+
+
+*/
+

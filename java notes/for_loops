@@ -1,0 +1,30 @@
+public class for_loops{
+    public static void main(String[] ronniel) {
+        int myNum = 10;
+        
+        while (myNum != 0) {
+            myNum--; 
+            System.out.println(myNum);
+            
+        }
+        main();
+    }   
+    
+    public static void main() {
+        String danzkie = "ngefkjgnerng";
+        for(int i=0;i<danzkie.length();i++){
+            System.out.println("Gwapo ko");
+        }
+        
+    }
+
+
+}
+
+
+// Self-explanatory
+
+//for loops when making the first statement i should remember to declare the variable type or when making a project in java itself lol
+// There's also nested loops but u get the idea
+
+/* */

@@ -1,0 +1,226 @@
+Java I/O Streams
+I/O Streams (Input/Output Streams)
+
+You've already seen how to create, read, and write simple text files.
+
+In Java, there is an important difference between working with the File class and working with I/O Streams (Input/Output Stream):
+
+    The File class (from java.io) is used to get information about files and directories:
+        Does the file exist?
+        What is its name or size?
+        Create or delete files and folders
+
+    But: the File class does not read or write the contents of the file.
+
+So far, we have used FileWriter for writing text and Scanner for reading text. These are easy to use, but they are mainly designed for simple text files.
+
+I/O Streams are more flexible, because they work with text and binary data (like images, audio, PDFs).
+Types of Streams
+
+    Byte Streams
+    Work with raw binary data (like images, audio, and PDF files).
+    Examples: FileInputStream, FileOutputStream.
+
+    Character Streams
+    Work with text (characters and strings). These streams automatically handle character encoding.
+    Examples: FileReader, FileWriter, BufferedReader, BufferedWriter.
+
+Tip: Use character streams when working with text, and byte streams when working with binary data
+
+
+
+Copy a Binary File (Real-World Example)
+
+The real strength of FileInputStream is that it can handle any file type, not just text. Here is an example that copies an image file:
+Example
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class CopyFile {
+  public static void main(String[] args) {
+    // Copy image.jpg into copy.jpg
+    try (FileInputStream input = new FileInputStream("image.jpg");
+         FileOutputStream output = new FileOutputStream("copy.jpg")) {
+
+      int i;
+      while ((i = input.read()) != -1) {
+        output.write(i);  // write the raw byte to the new file
+      }
+
+      System.out.println("File copied successfully.");
+
+    } catch (IOException e) {
+      System.out.println("Error handling file.");
+    }
+  }
+}
+
+Explanation: This program reads image.jpg and writes it into copy.jpg. Since it works with raw bytes, it can copy any kind of file - text, images, audio, or PDFs.
+
+Note: The program also uses FileOutputStream. While FileInputStream is used to read bytes from a file, FileOutputStream is used to write bytes to a file. Together, they make it possible to copy any kind of file.
+
+You will learn more about FileOutputStream in the next chapter.
+Choosing the Right Class
+
+Java gives you several ways to read files. Here's when to pick each one:
+
+    Scanner - best for simple text and when you want to parse numbers or words easily.
+    BufferedReader - best for large text files, because it is faster and reads line by line.
+    FileInputStream - best for binary data (images, audio, PDFs) or when you need full control of raw bytes.
+
+Copy a Binary File (Real-World Example)
+
+The real strength of FileInputStream is that it can handle any file type, not just text. Here is an example that copies an image file:
+Example
+
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
+import java.io.IOException;
+
+public class CopyFile {
+  public static void main(String[] args) {
+    // Copy image.jpg into copy.jpg
+    try (FileInputStream input = new FileInputStream("image.jpg");
+         FileOutputStream output = new FileOutputStream("copy.jpg")) {
+
+      int i;
+      while ((i = input.read()) != -1) {
+        output.write(i);  // write the raw byte to the new file
+      }
+
+      System.out.println("File copied successfully.");
+
+    } catch (IOException e) {
+      System.out.println("Error handling file.");
+    }
+  }
+}
+
+Explanation: This program reads image.jpg and writes it into copy.jpg. Since it works with raw bytes, it can copy any kind of file - text, images, audio, or PDFs.
+
+Note: The program also uses FileOutputStream. While FileInputStream is used to read bytes from a file, FileOutputStream is used to write bytes to a file. Together, they make it possible to copy any kind of file.
+
+You will learn more about FileOutputStream in the next chapter.
+Choosing the Right Class
+
+Java gives you several ways to read files. Here's when to pick each one:
+
+    Scanner - best for simple text and when you want to parse numbers or words easily.
+    BufferedReader - best for large text files, because it is faster and reads line by line.
+    FileInputStream - best for binary data (images, audio, PDFs) or when you need full control of raw bytes.
+
+
+Java BufferedReader
+BufferedReader and BufferedWriter
+
+BufferedReader and BufferedWriter make reading and writing text files faster.
+
+    BufferedReader lets you read text line by line with readLine().
+    BufferedWriter lets you write text efficiently and add new lines with newLine().
+
+These classes are usually combined with FileReader and FileWriter, which handle opening or creating the file. The buffered classes then make reading/writing faster by using a memory buffer.
+Read a Text File (Line by Line)
+
+Use BufferedReader with FileReader to read each line of a file:
+Example
+Get your own Java Server
+
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
+
+public class Main {
+  public static void main(String[] args) {
+    try (BufferedReader br = new BufferedReader(new FileReader("filename.txt"))) {
+      String line;
+      while ((line = br.readLine()) != null) {
+        System.out.println(line);
+      }
+    } catch (IOException e) {
+      System.out.println("Error reading file.");
+    }
+  }
+}
+ 
+
+The output will be:
+Some text from filename.txt
+
+Comparing File Reading Classes
+
+Java gives you several ways to read files. Here's when to pick each one:
+
+    Scanner - best for simple text. It can split text into lines, words, or numbers (e.g., nextInt(), nextLine()).
+    BufferedReader - best for large text files. It is faster, uses less memory, and can read full lines with readLine().
+    FileInputStream - best for binary files (like images, PDFs, or audio)
+
+
+
+BufferedWriter
+
+The BufferedWriter class is used to write text to a file, one line or one string at a time. If the file already exists, its contents will be replaced (overwritten).
+Write to a Text File
+
+Use BufferedWriter with FileWriter to write text to a file. The write() method adds text, and you can use newLine() to insert a line break:
+Example
+Get your own Java Server
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class Main {
+  public static void main(String[] args) {
+    try (BufferedWriter bw = new BufferedWriter(new FileWriter("filename.txt"))) {
+      bw.write("First line");
+      bw.newLine();  // add line break
+      bw.write("Second line");
+      System.out.println("Successfully wrote to the file.");
+    } catch (IOException e) {
+      System.out.println("Error writing file.");
+    }
+  }
+}
+ 
+
+The output will be:
+Successfully wrote to the file.
+
+Explanation: This program creates (or overwrites) filename.txt and writes two lines of text into it. The newLine() method inserts a line break between "First line" and "Second line". If everything goes well, the console will print "Successfully wrote to the file."
+Append to a Text File
+
+To add new content to the end of a file (instead of overwriting), pass true to FileWriter:
+Example
+
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class Main {
+  public static void main(String[] args) {
+    // true = append mode
+    try (BufferedWriter bw = new BufferedWriter(new FileWriter("filename.txt", true))) {
+      bw.newLine();                      // move to a new line
+      bw.write("Appended line");         // add new text at the end
+      System.out.println("Successfully appended to the file.");
+    } catch (IOException e) {
+      System.out.println("Error writing file.");
+    }
+  }
+}
+ 
+ 
+
+The output will be:
+Successfully appended to the file.
+
+Explanation: This program keeps the existing content of filename.txt and adds a new line with the text "Appended line" at the end. If everything works, the console prints "Successfully appended to the file."
+Comparing File Writing Classes
+
+Java gives you several ways to write to files. Here's when to pick each one:
+
+    FileWriter - best for simple text writing. Quick and easy to use.
+    BufferedWriter - better for larger text files, because it is faster and lets you easily add line breaks with newLine().
+    FileOutputStream - best for binary files (like images, PDFs, or audio)

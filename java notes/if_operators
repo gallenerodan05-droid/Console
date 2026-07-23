@@ -1,0 +1,67 @@
+public class if_operators{
+    public static void main(String[] args) {
+    
+
+    int basta = 12;
+    System.out.println(basta);
+    String bastaz = "Dan Gallenero";
+    System.out.println(bastaz);
+    int myNum;
+    myNum = 90; 
+    
+    if(myNum > bastaz.length() && myNum== 90){
+        System.out.println("HEEELLLLLLOOOOOOOO");
+    }
+    else if(myNum<bastaz.length()){
+        System.out.println("YOOSHAAAA");
+    }
+    else{
+        System.out.println("GOOODDDBYEEE");
+    }
+    
+   ora();
+   Switch();
+}
+
+  static void ora(){
+    System.out.println("tjtjtjjjtjtjtj");
+}
+
+
+
+public static void Switch(){
+    int aguy = 12;
+    switch(aguy){
+        case 11 -> System.out.println("dede");
+        default -> {
+            System.out.println("oraaa");
+        }
+    }
+}
+
+}
+
+
+/*Java only runs one main method, and it must have this exact signature:
+
+public static void main(String[] args)
+ */
+
+    
+/*LOGICAL OPERATORS 
+&& = AND both conditions true
+|| = just one condition needs to be true
+! = not. makes the condition opposite*/
+
+
+// Switch Statements 
+// Cases only work on numbers/int somehow
+
+/*switch(expression){
+code block;
+break;}
+
+Alternatively, we can just use "->" using this we'd no longer have to use the "break" and semicolon
+which makes the code lesser and safer said gpt.
+
+*/

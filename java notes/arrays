@@ -1,0 +1,92 @@
+public class arrays {
+    
+        public static void main(String[] args) {
+    
+        //   String [] cars = {"bmx","bmw","kupaers","halooo"};
+        //    cars[0]= "opel";
+        //    String[] carz = new String[2];
+        //    carz[0]="volvo";
+        //    carz[1]= "poopo";
+
+        // //  System.out.printf("ako kay gwapo %s kaayu",cars[0]);
+
+        //   for(String car:cars){
+           
+        //     System.out.println(car);
+        //     System.out.println(car.length());
+
+        //   }
+
+          //Multidimensional arrays
+
+          int[][] numbez = {{10,8,6},{1,4,9}};
+     //     System.out.println(numbez);
+          //[[I@3feba861 = output
+          /*why this happens (CORE REASON)
+
+            In Java:
+
+            Arrays are objects
+
+            System.out.println(object) calls:
+
+            object.toString()
+            Arrays do NOT override toString()
+            
+
+            VERY IMPORTANT CONCEPT
+            numbez is NOT the numbers
+
+            It is a reference to an array object.
+
+            */
+           for (int[] row : numbez) {
+    for (int num : row) {
+        System.out.print(num + " ");
+    }
+    System.out.println();
+}
+for (int i = 0; i < numbez.length; i++) {
+    for (int j = 0; j < numbez[i].length; j++) {
+        System.out.print(numbez[i][j] + " ");
+    }
+    System.out.println();
+}
+
+
+
+        }
+        
+}
+
+
+//Format specifiers in Java %d = int, %f = flaot, %s = strings, %c single character
+// %b boolean, %n new line.
+// You  have to set the generator as printf not print ln
+// Very similar to pythons cuz ot would just actually be an f.
+// This kind of method works for "C" somehow.
+// I have to put the variable itself in the parentheses 
+// and then put the format specifier where id like to put my value
+
+
+//Multidimensional arrays = an array that contains other arrays. 2d arrays or more bascially
+// Unlike most arrays java is strict with its brackets. If you have two arrays the value must also be put into two brackets.
+// Just brackets otherwise it becomes an error 
+//          int[][] numbez = {{1,2,3},{1,2,3}};
+//            int[][] numbez = {1,{1,2,3},{1,2,3}}; // this is an error
+
+
+/*Why 1D arrays behave differently (important)
+int[] a = {1, 2, 3};
+System.out.println(a);
+
+
+Still prints:
+
+[I@1a2b3c
+
+
+Only this works:
+
+System.out.println(Arrays.toString(a));
+ */

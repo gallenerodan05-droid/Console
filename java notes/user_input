@@ -1,0 +1,48 @@
+
+import java.util.Scanner; // import the Scanner class 
+
+
+
+     class Main {
+      public static void main(String[] args) {
+     myScanner();
+      }
+
+      static void myScanner(){
+           try (Scanner myObj = new Scanner(System.in)) {
+          String userName;
+
+          String age;
+          
+          // Enter username and press Enter
+          // i don't actually enter a name here but rather in the nextline.
+          // the nextline is whre i truly enter the input value
+          // i print this line but the second line(the line i enter my name)
+          // is actually the part that's most crucial for that is what
+          // activates the scanner
+          System.out.print("Enter username");
+          userName = myObj.nextLine();
+          age = myObj.nextLine();
+
+          System.out.printf("Username is: %s ", userName);  
+          System.out.println();    
+          System.out.printf("ddjaa %s", age);
+        }  
+      }
+    }
+
+                  
+// i only need to call the scanner a single time actually lol
+//commma is not actualyl allowed when printing lol 
+// format speciifer printf( "  fewlfwe %s", variable) this either onlyworks once or yeah
+
+//axel create your own package
+/*MyPackageClass.java
+
+package mypack;
+class MyPackageClass {
+  public static void main(String[] args) {
+    System.out.println("This is my package!");
+  }
+}
+ */

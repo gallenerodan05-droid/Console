@@ -1,0 +1,22 @@
+
+import java.util.Scanner; // import the Scanner class 
+
+class Main {
+  public static void main(String[] args) {
+    Scanner myObj = new Scanner(System.in);
+    String userName;
+    
+    // Enter username and press Enter
+    System.out.println("Enter username"); 
+    userName = myObj.nextLine();   
+       
+    System.out.println("Username is: " + userName);        
+  }
+}
+
+              
+
+In the example above, java.util is a package, while Scanner is a class of the java.util package.
+
+To use the Scanner class, create an object of the class and use any of the available methods found in the Scanner class documentation. In our example, we will use the 
+nextLine() method, which is used to read a complete line:

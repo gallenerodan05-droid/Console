@@ -1,0 +1,270 @@
+LMAOOO welcome to one of Java's nicest features. 😂 `printf()` is incredibly useful once you know the common format specifiers. You don't need to memorize all of them—just the ones you'll use 95% of the time.
+
+# Most Common Java `printf()` Format Specifiers
+
+| Specifier | Meaning                       | Example            |
+| --------- | ----------------------------- | ------------------ |
+| `%d`      | Integer                       | `25`               |
+| `%f`      | Floating-point (double/float) | `3.141593`         |
+| `%s`      | String                        | `"Axel"`           |
+| `%c`      | Character                     | `'A'`              |
+| `%b`      | Boolean                       | `true`             |
+| `%n`      | New line                      | Moves to next line |
+| `%%`      | Prints a `%` sign             | `%`                |
+
+---
+
+# Floating Point Formatting
+
+Default:
+
+```java
+System.out.printf("%f", 3.14159265);
+```
+
+Output
+
+```
+3.141593
+```
+
+---
+
+2 decimal places
+
+```java
+System.out.printf("%.2f", 3.14159265);
+```
+
+Output
+
+```
+3.14
+```
+
+---
+
+3 decimal places
+
+```java
+System.out.printf("%.3f", 3.14159265);
+```
+
+Output
+
+```
+3.142
+```
+
+---
+
+No decimal places
+
+```java
+System.out.printf("%.0f", 3.14159265);
+```
+
+Output
+
+```
+3
+```
+
+---
+
+# Width Formatting
+
+Minimum width of 10
+
+```java
+System.out.printf("%10d", 15);
+```
+
+Output
+
+```
+        15
+```
+
+Notice the spaces.
+
+---
+
+Left aligned
+
+```java
+System.out.printf("%-10d", 15);
+```
+
+Output
+
+```
+15
+```
+
+---
+
+Zero padding
+
+```java
+System.out.printf("%05d", 15);
+```
+
+Output
+
+```
+00015
+```
+
+---
+
+# Combining Width and Precision
+
+```java
+System.out.printf("%8.2f", 12.3456);
+```
+
+Output
+
+```
+   12.35
+```
+
+Meaning
+
+* Width = 8
+* Decimal places = 2
+
+---
+
+# Multiple Variables
+
+```java
+String name = "Axel";
+int age = 20;
+double gpa = 1.75;
+
+System.out.printf("%s is %d years old with a GPA of %.2f%n",
+        name, age, gpa);
+```
+
+Output
+
+```
+Axel is 20 years old with a GPA of 1.75
+```
+
+---
+
+# Printing a Percent Sign
+
+```java
+System.out.printf("Battery: %d%%%n", 95);
+```
+
+Output
+
+```
+Battery: 95%
+```
+
+Notice
+
+```
+%%
+```
+
+prints a single `%`.
+
+---
+
+# Nice Table Formatting
+
+```java
+System.out.printf("%-15s %5d%n", "Math", 98);
+System.out.printf("%-15s %5d%n", "Science", 100);
+System.out.printf("%-15s %5d%n", "English", 91);
+```
+
+Output
+
+```
+Math               98
+Science           100
+English            91
+```
+
+This is used **all the time** for CLI applications.
+
+---
+
+# Currency
+
+```java
+double price = 299.99;
+
+System.out.printf("$%.2f%n", price);
+```
+
+Output
+
+```
+$299.99
+```
+
+---
+
+# Common Interview/Real Project Example
+
+```java
+String student = "John";
+double average = 89.45678;
+
+System.out.printf("Student: %-10s Average: %.2f%n",
+        student, average);
+```
+
+Output
+
+```
+Student: John       Average: 89.46
+```
+
+---
+
+# The Ones You'll Use the Most
+
+```text
+%d      int
+%f      double/float
+%.2f    double with 2 decimal places
+%s      String
+%c      char
+%b      boolean
+%n      new line
+%%      percent sign
+```
+
+---
+
+## A neat trick you'll probably like
+
+You can **reuse arguments** with indexed specifiers:
+
+```java
+System.out.printf("%1$s got %2$d points. %1$s is happy!%n",
+                  "Axel", 100);
+```
+
+Output:
+
+```
+Axel got 100 points. Axel is happy!
+```
+
+* `%1$s` → first argument (`"Axel"`)
+* `%2$d` → second argument (`100`)
+
+This isn't something you'll use every day, but it's handy when you want to repeat a value without passing it multiple times.
+
+Since you're diving deep into Java, I'd recommend getting comfortable with `printf()` now. You'll see it in console apps, debugging, data formatting, and even coding interviews. It's one of those small skills that makes your output look much more polished.

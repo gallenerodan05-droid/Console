@@ -1,0 +1,290 @@
+Java Files
+
+File handling is an important part of any application.
+
+Java has several methods for creating, reading, updating, and deleting files.
+Java File Handling
+
+The File class from the java.io package, allows us to work with files.
+
+To use the File class, create an object of the class, and specify the filename or directory name:
+Example
+Get your own Java Server
+
+import java.io.File;  // Import the File class
+
+File myObj = new File("filename.txt"); // Specify the filename
+
+If you don't know what a package is, read our Java Packages Tutorial.
+
+The File class has many useful methods for creating and getting information about files. For example:
+Method 	Type 	Description
+canRead() 	Boolean 	Tests whether the file is readable or not
+canWrite() 	Boolean 	Tests whether the file is writable or not
+createNewFile() 	Boolean 	Creates an empty file
+delete() 	Boolean 	Deletes a file
+exists() 	Boolean 	Tests whether the file exists
+getName() 	String 	Returns the name of the file
+getAbsolutePath() 	String 	Returns the absolute pathname of the file
+length() 	Long 	Returns the size of the file in bytes
+list() 	String[] 	Returns an array of the files in the directory
+mkdir() 	Boolean 	Creates a directory
+
+
+Create a File
+
+In Java, you can create a new file with the createNewFile() method from the File class.
+
+This method returns:
+
+    true - if the file was created successfully
+    false - if the file already exists
+
+Note that the method is enclosed in a try...catch block. This is necessary because it throws an IOException if an error occurs (if the file cannot be created for some reason):
+Example
+Get your own Java Server
+
+import java.io.File;       // Import the File class
+import java.io.IOException; // Import IOException to handle errors
+
+public class CreateFile {
+  public static void main(String[] args) {
+    try {
+      File myObj = new File("filename.txt"); // Create File object
+      if (myObj.createNewFile()) {           // Try to create the file
+        System.out.println("File created: " + myObj.getName());
+      } else {
+        System.out.println("File already exists.");
+      }
+    } catch (IOException e) {
+      System.out.println("An error occurred.");
+      e.printStackTrace(); // Print error details
+    }
+  }
+}
+
+The output will be:
+File created: filename.txt
+
+Explanation: The program tries to create a file called filename.txt. If the file does not exist, it will be created and a success message is printed. If the file already exists, you will see the message "File already exists." instead.
+
+Note: The createNewFile() method only creates an empty file. It does not add any content inside. You will learn how to write text to files in the next chapter.
+Create a File in a Specific Folder
+
+To create a file in a specific directory (requires permission), specify the path of the file and use double backslashes to escape the "\" character (for Windows). On Mac and Linux you can just write the path, like: /Users/name/filename.txt
+Example
+
+File myObj = new File("C:\\Users\\MyName\\filename.txt");
+
+
+
+Write To a File
+
+If you are just starting with Java, the easiest way to write text to a file is by using the FileWriter class.
+
+In the example below, we use FileWriter together with its write() method to create and write some text into a file.
+
+Note: When you are done, you should close the writer with the close() method:
+Example
+Get your own Java Server
+
+import java.io.FileWriter;   // Import the FileWriter class
+import java.io.IOException;  // Import the IOException class
+
+public class WriteToFile {
+  public static void main(String[] args) {
+    try {
+      FileWriter myWriter = new FileWriter("filename.txt");
+      myWriter.write("Files in Java might be tricky, but it is fun enough!");
+      myWriter.close();  // must close manually
+      System.out.println("Successfully wrote to the file.");
+    } catch (IOException e) {
+      System.out.println("An error occurred.");
+      e.printStackTrace();
+    }
+  }
+}
+ 
+ 
+ 
+
+The output will be:
+Successfully wrote to the file.
+
+Explanation: This program tries to write some text into a file named filename.txt. If everything works, the program will print "Successfully wrote to the file." in the console. If something goes wrong (for example, the file cannot be opened), it will print "An error occurred." instead.
+Write To a File with try-with-resources
+
+Since Java 7, you can use try-with-resources. This makes sure the writer is closed automatically, even if an error occurs:
+Example
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class WriteToFile {
+  public static void main(String[] args) {
+    // FileWriter will be closed automatically here
+    try (FileWriter myWriter = new FileWriter("filename.txt")) {
+      myWriter.write("Files in Java might be tricky, but it is fun enough!");
+      System.out.println("Successfully wrote to the file.");
+    } catch (IOException e) {
+      System.out.println("An error occurred.");
+      e.printStackTrace();
+    }
+  }
+}
+ 
+
+The output will be:
+Successfully wrote to the file.
+
+Append to a File
+
+Normally, FileWriter will overwrite a file if it already exists. If you want to add new content at the end of the file (without deleting what's already there), you can use the two-argument constructor and pass true as the second parameter. This puts the writer into append mode:
+Example
+
+import java.io.FileWriter;
+import java.io.IOException;
+
+public class AppendToFile {
+  public static void main(String[] args) {
+    // true = append mode
+    try (FileWriter myWriter = new FileWriter("filename.txt", true)) {
+      myWriter.write("\nAppended text!");
+      System.out.println("Successfully appended to the file.");
+    } catch (IOException e) {
+      System.out.println("An error occurred.");
+      e.printStackTrace();
+    }
+  }
+}
+ 
+ 
+
+The output will be:
+Successfully appended to the file.
+
+Explanation: This program adds the text "Appended text!" to the end of filename.txt instead of replacing the file's content.
+
+Note: If the file does not already exist, Java will create it before appending.
+
+Tip: To see what's inside the file, go to the Java Read Files chapter.
+Other Ways to Write to Files
+
+There are several classes you can use to write files in Java:
+
+    FileWriter - easiest choice for basic text.
+    BufferedWriter - better for large text files, because it is faster and supports handy features.
+    FileOutputStream - best for binary data (images, audio, PDFs)
+
+
+    Read a File
+
+In the previous chapters, you learned how to create and write to a file.
+
+In the following example, we use the Scanner class to read the contents of the text file we created in the previous chapter:
+Example
+Get your own Java Server
+
+import java.io.File;                  // Import the File class
+import java.io.FileNotFoundException; // Import this class to handle errors
+import java.util.Scanner;             // Import the Scanner class to read text files
+
+public class ReadFile {
+  public static void main(String[] args) {
+    File myObj = new File("filename.txt");
+
+    // try-with-resources: Scanner will be closed automatically
+    try (Scanner myReader = new Scanner(myObj)) {
+      while (myReader.hasNextLine()) {
+        String data = myReader.nextLine();
+        System.out.println(data);
+      }
+    } catch (FileNotFoundException e) {
+      System.out.println("An error occurred.");
+      e.printStackTrace();
+    }
+  }
+}
+
+The output will be:
+Files in Java might be tricky, but it is fun enough!
+
+Explanation: This program opens the file named filename.txt and reads it line by line using a Scanner. Each line is printed to the console. If the file cannot be found, the program will print "An error occurred." instead.
+Get File Information
+
+To get more information about a file, use any of the File methods:
+Example
+
+import java.io.File;  // Import the File class
+
+public class GetFileInfo { 
+  public static void main(String[] args) {
+    File myObj = new File("filename.txt");
+    if (myObj.exists()) {
+      System.out.println("File name: " + myObj.getName());
+      System.out.println("Absolute path: " + myObj.getAbsolutePath());
+      System.out.println("Writeable: " + myObj.canWrite());
+      System.out.println("Readable " + myObj.canRead());
+      System.out.println("File size in bytes " + myObj.length());
+    } else {
+      System.out.println("The file does not exist.");
+    }
+  }
+}
+
+The output will be:
+File name: filename.txt
+Absolute path: C:\Users\MyName\filename.txt
+Writeable: true
+Readable: true
+File size in bytes: 0
+Other Ways to Read Files
+
+There are several classes you can use to read files in Java:
+
+    Scanner - best for simple text and when you want to parse numbers or words easily.
+    BufferedReader - best for large text files, because it is faster and reads line by line.
+    FileInputStream - best for binary data (images, audio, PDFs) or when you need full control of raw bytes.
+
+
+Delete a File
+
+To delete a file in Java, use the delete() method:
+Example
+Get your own Java Server
+
+import java.io.File;  // Import the File class
+
+public class DeleteFile {
+  public static void main(String[] args) { 
+    File myObj = new File("filename.txt"); 
+    if (myObj.delete()) { 
+      System.out.println("Deleted the file: " + myObj.getName());
+    } else {
+      System.out.println("Failed to delete the file.");
+    } 
+  } 
+}
+
+The output will be:
+Deleted the file: filename.txt
+Delete a Folder
+
+You can also delete a folder. However, it must be empty:
+Example
+
+import java.io.File; 
+
+public class DeleteFolder {
+  public static void main(String[] args) { 
+    File myObj = new File("C:\\Users\\MyName\\Test"); 
+    if (myObj.delete()) { 
+      System.out.println("Deleted the folder: " + myObj.getName());
+    } else {
+      System.out.println("Failed to delete the folder.");
+    } 
+  } 
+}
+
+The output will be:
+Deleted the folder: Test 

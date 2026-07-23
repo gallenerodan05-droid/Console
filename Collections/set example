@@ -1,0 +1,39 @@
+Map<String, List<String>> classes = new HashMap<>();
+Set<String> enrolled = new HashSet<>();
+Queue<String> waitlist = new LinkedList<>();
+Deque<String> recentEnrollments = new ArrayDeque<>();
+
+classes.put("BSIT", new ArrayList<>());
+classes.put("BSCS", new ArrayList<>());
+
+String[] students = {"Dan", "Alice", "Bob", "Dan", "Charlie", "Alice"};
+String[] subjects = {"BSIT", "BSCS", "BSIT", "BSCS", "BSIT", "BSIT"};
+
+for(int i = 0; i < students.length; i++) {
+    if(enrolled.contains(students[i])) {
+        waitlist.add(students[i]);
+        continue; // immediately jumps back to the top of the loop
+        // therefore the lines below no longer run 
+    }
+    classes.get(subjects[i]).add(students[i]);
+    enrolled.add(students[i]);
+    recentEnrollments.push(students[i]);
+}
+
+System.out.println("BSIT: " + classes.get("BSIT"));
+System.out.println("BSCS: " + classes.get("BSCS"));
+System.out.println("Waitlist: " + waitlist);
+System.out.println("Last enrolled: " + recentEnrollments.peek());
+System.out.println("Total enrolled: " + enrolled.size());
+
+
+Alice ordered apple
+Bob cannot order mango - out of stock
+Charlie ordered banana
+Dan ordered Apple
+Eve ordered apple
+Frank ordered apple
+
+Remaining inventory: {Apple:0,Banana:0,Mango:0}
+Last processed: Frank-Apple
+Out of stock items: Mango
